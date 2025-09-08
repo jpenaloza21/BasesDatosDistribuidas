@@ -1,0 +1,66 @@
+clase 4 05/09/2025
+transparencia de transacción 
+permite actualizar datos en varios sitios de la red, si esta bien lo hace si no se acaba.
+
+formato de transacción:
+begin work -> Inicio de la transacción 
+*
+select 
+update  -> Solicitudes  
+delete 
+*
+commit -> fin de la transacción 
+
+Trasaccion distribuida. actualiza y solicita datos de varios sitios remotos en una red.
+
+----
+solicitud remota -> accede a datos que sera procesados por un sólo procesador de base de datos remoto.
+La sentencia o solicitud SQL puede hacer referencia a datos en un solo sitio remoto
+-----
+cuando ambas tablas están el el sitioB
+la transacción puede hacer referencia solamente a un procesador de datos remoto.
+---
+Cada sentencia o solicitud SQL puede hacer referencia solamente a un procesador de datos, y este va ser el gestor de datos.
+se puede utilizar remotamente 1 y localmente 2 gestores de datos
+permite que una transacción haga referencia a varios sitios de procesamiento de datos diferentes(locales y remotos ).
+-----------------------------
+una solicitud distribuida permite hacer referencia a datos de varios sitios de procesamientos de datos remotos.
+-Divide una tabla en varios fragmentos.
+-hace referencia a uno o mas fragmentos solamente con una solicitud.
+**********************************************************************************************************************
+Transparencia de replicación.
+se refiere que si existen copias de objetos de la base de datos, su existencia debe ser controlado por el sistema no por el usuario.
+***********************************************************************************************************************
+- transparencia de falla -> 
+Permite que el sistema siga operando en el caso de una falla de nodo.
+****************************************************************************************************************
+TRANSPARENCIA DE DESEMPEÑO
+si hay varias solicitudes, se hace una sola solicitud que englobe todo para dicha pregunta.
+relaciones globales a consultas definidas sobre framentacion
+es la optimización de consultas, reduce al mínimo el costo total asociado con la ejecución de una solicitud.
+---
+OPTIMIZACION DE CONSULTAS
+Los costos asociados con una solicitud son una función 
+- El costo del tiempo de entrada y salida implica al acceder los datos físicos guardados en disco. -> mas recursos
+- costo de comunicación asociados con la trasmisión de datos  entre nodos en sistema de base de datos distribuidos. -> mas recursos
+- costo de tiempo de CPU asociados con la sobrecarga de procesamiento.
+-----
+Optimización de consultas
+Se basa en 2 principios
+- la selección del orden de ejecución optimo.
+- La selección del sitio a ser accedidos para reducir al mínimo el costo de de comunicación.
+
+se clasifican como manuales o automáticos.
+automáticos -> la ruta mas barata
+manual -> lo que nosotros queramos seleccionar
+
+una consulta estática, la mejor estrategia es escogida por el DBMS -> GESTOR
+
+la dinámica, ocurre en el tiempo de ejecución.
+
+exiten texnicas para optimizar
+- basado en estadísticas -> proporcionan información como números de registros, tiempo de acceso promedio, numero de solicitudes atendidos, etc 
+- basado en reglas -> conjunto definidas por el usuario para escoger la mejor estrategia 
+******************************************************************************
+TRANSPARENCIA DE HETEROGENEIDAD
+Permite la integración de varios sistemas de administración de base de datos locales
